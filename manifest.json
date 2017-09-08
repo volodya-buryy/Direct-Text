@@ -1,0 +1,33 @@
+{
+    "manifest_version": 2,
+
+    "name": "direct text",
+    "description": "test",
+    "version": "0.1",
+
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "https://api.domain.com/"
+    ],
+
+    "content_scripts": [
+        {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+        }
+    ],
+
+    "background": {
+        "persistent": false,
+        "scripts": ["background.js"]
+    },
+
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+
+    "browser_action": {
+        "default_icon": "icon.png",
+        "default_title": "Test",
+        "default_popup": "index.html"
+    }
+}
