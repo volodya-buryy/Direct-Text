@@ -10,14 +10,12 @@ chrome.runtime.sendMessage({
     // First, validate the message's structure
     if ((msg.from === 'popup') && (msg.subject === 'DOMInfo')) {
       // Collect the necessary data
-      // (For your specific requirements `document.querySelectorAll(...)`
-      //  should be equivalent to jquery's `$(...)`)
-      console.log(document)
+
       var domInfo = {
         total:   document.querySelectorAll('*').length,
         inputs:  document.querySelectorAll('input').length,
         buttons: document.querySelectorAll('button').length,
-        all: document.querySelectorAll( 'body *' )
+        allWindowDoc: document.documentElement.innerHTML
       };
 
       // Directly respond to the sender (popup),

@@ -16,9 +16,6 @@ function setDOMInfo(info) {
 	  // ...and send a request for the DOM info...
 	  chrome.tabs.sendMessage(
 		  tabs[0].id,
-		  {from: 'popup', subject: 'DOMInfo'}, //action: "getDOM"
-		  // ...also specifying a callback to be called
-		  //    from the receiving end (content script)
-		  setDOMInfo);
+		  {from: 'popup', subject: 'DOMInfo'},  setDOMInfo);
 	});
   });
