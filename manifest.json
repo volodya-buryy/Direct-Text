@@ -1,33 +1,32 @@
 {
     "manifest_version": 2,
-
-    "name": "direct text",
-    "description": "test",
-    "version": "0.1",
-
-    "permissions": [
-        "tabs",
-        "activeTab",
-        "https://api.domain.com/"
-    ],
-
-    "content_scripts": [
-        {
-        "matches": ["<all_urls>"],
-        "js": ["content.js"]
-        }
-    ],
+    "name":    "Test Extension",
+    "version": "1.0",
+    "offline_enabled": true,
 
     "background": {
-        "persistent": false,
-        "scripts": ["background.js"]
+      "persistent": false,
+      "scripts": ["background.js"]
     },
 
-    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "content_scripts": [{
+      "matches":    ["*://*/*"],
+      "js":         ["content.js"],
+      "run_at":     "document_idle",
+      "all_frames": false
+    }],
 
-    "browser_action": {
-        "default_icon": "icon.png",
-        "default_title": "Test",
-        "default_popup": "index.html"
-    }
-}
+    "page_action": {
+      "default_title": "Test Extension",
+      "default_icon": {
+         "19": "icon.png"
+      },
+      "default_popup": "index.html"
+    },
+
+    // No special permissions required...
+    "permissions": [
+        "tabs",
+        "activeTab"
+    ]
+  }
