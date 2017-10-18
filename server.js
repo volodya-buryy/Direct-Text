@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'www')));
 app.post('/create-pdf-file', function(req, res){
     console.log(req.body.data.data)
     var str = req.body.data.data;
-    pdf.create(str, options).toFile(`./businesscard${new Date()}.pdf`, function(err, res) {
+    pdf.create(str, options).toFile(`./pdf/businesscard${new Date()}.pdf`, function(err, res) {
     if (err) return console.log(err);
         console.log(res); // { filename: '/app/businesscard.pdf' }
     });
